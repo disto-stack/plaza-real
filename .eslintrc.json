@@ -1,0 +1,26 @@
+{
+	"env": {
+		"browser": true,
+		"es2021": true
+	},
+	"extends": "eslint:recommended",
+	"parserOptions": {
+		"ecmaVersion": "latest",
+		"sourceType": "module"
+	},
+	"rules": {
+		"no-var": "error",
+		"space-before-blocks": "error",
+		"no-eval": "error",
+		"arrow-spacing": "error",
+		"camelcase": "warn",
+		"prefer-const": "warn",
+		"prefer-destructuring": "warn",
+		"prefer-template": "warn",
+		"no-unused-vars": "warn",
+		"no-unused-expressions": "warn",
+		"no-alert": "warn",
+		"no-console": "warn",
+		"yoda": "warn"
+	}
+}
