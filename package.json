@@ -4,7 +4,9 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1"
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"lint": "npx eslint src/",
+		"format": "npx prettier --write src"
 	},
 	"author": "disto-stack",
 	"license": "ISC",
@@ -13,6 +15,9 @@
 	},
 	"devDependencies": {
 		"eslint": "^8.43.0",
-		"eslint-config-airbnb-base": "^15.0.0"
+		"eslint-config-airbnb-base": "^15.0.0",
+		"eslint-config-prettier": "8.8.0",
+		"eslint-plugin-prettier": "4.2.1",
+		"prettier": "2.8.8"
 	}
 }
