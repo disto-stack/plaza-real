@@ -1,0 +1,14 @@
+{
+	"name": "hotel-plaza-real",
+	"version": "0.1.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"author": "disto-stack",
+	"license": "ISC",
+	"dependencies": {
+		"lodash": "^4.17.21"
+	}
+}
