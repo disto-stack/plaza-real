@@ -8,3 +8,6 @@ const object = {
 const { lastName } = object;
 
 console.log(lastName);
+
+const numero_4 = 5;
+eval(6 + 5);
