@@ -1,4 +1,6 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+
 const path = require('path');
 
 module.exports = {
@@ -11,8 +13,15 @@ module.exports = {
 	module: {
 		rules: [
 			{
+				test: /\.hbs$/,
+				loader: 'handlebars-loader',
+				options: {
+					partialDirs: [path.join(__dirname, 'src', 'pages', 'partials')],
+				},
+			},
+			{
 				test: /\.s[ac]ss$/i,
-				use: ['style-loader', 'css-loader', 'sass-loader'],
+				use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader', 'postcss-loader'],
 			},
 			{
 				test: /\.m?js$/,
@@ -26,7 +35,15 @@ module.exports = {
 			},
 		],
 	},
-	plugins: [new HtmlWebpackPlugin()],
+	plugins: [
+		new HtmlWebpackPlugin({
+			template: path.join(__dirname, 'src', 'index.hbs'),
+			filename: path.join(__dirname, 'dist', 'index.html'),
+		}),
+		new MiniCssExtractPlugin({
+			filename: '[name].css',
+		}),
+	],
 	devServer: {
 		static: {
 			directory: path.join(__dirname, 'dist'),

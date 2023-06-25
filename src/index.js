@@ -1,3 +1,5 @@
+import './sass/index.scss';
+
 const object = {
 	name: 'Juan',
 	lastName: 'Ocampo',
