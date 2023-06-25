@@ -1,6 +1,1 @@
-import { sum } from './a';
-import { subtract } from './b';
-
-subtract();
-
-console.log(sum());
+import './sass/index.scss';
