@@ -1,0 +1,52 @@
+name: Build and Deploy website
+
+on:
+    push:
+        branches:
+            - main
+jobs:
+    build:
+        name: Build
+        runs-on: ubuntu-latest
+
+        steps:
+            - uses: actions/checkout@v3
+
+            - name: Use Node.js 18.x
+              uses: actions/setup-node@v1
+              with:
+                  node-version: 18.x
+
+            - name: Build
+              run: |
+                  npm install --no-audit --no-fund --no-optional
+                  npm run build
+
+            - name: Archive Build
+              uses: actions/upload-artifact@v2.3.1
+              with:
+                  name: dist
+                  path: dist
+
+    deploy:
+        name: Deploy
+        needs: Build
+
+        runs-on: ubuntu-latest
+
+        steps:
+            - uses: actions/checkout@v3
+
+            - name: Download a Build Artifact
+              uses: actions/download-artifact@v2.1.0
+              with:
+                  name: dist
+                  path: dist
+
+            - name: Deploy to Firebase
+              uses: FirebaseExtended/action-hosting-deploy@v0
+              with:
+                  repoToken: '${{ secrets.GITHUB_TOKEN }}'
+                  firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_HOTEL_PLAZA_REAL }}'
+                  channelId: live
+                  projectId: hotel-plaza-real
